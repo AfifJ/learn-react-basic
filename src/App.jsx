@@ -13,9 +13,9 @@ const App = () => {
     setMovies(data.Search);
   };
 
-/*   useEffect(() => {
-    searchMovies("");
-  }, []); */
+  useEffect(() => {
+    searchMovies("home");
+  }, []);
 
   return (
     <>
@@ -30,7 +30,7 @@ const App = () => {
             value={InputSearch}
             onChange={(e) => {setInputSearch(e.target.value)}}
           />
-          <button className="bg-blue-300 hover:bg-blue-500 p-4" onClick={() => {setMovies(InputSearch)}}>Search</button>
+          <button className="bg-blue-300 hover:bg-blue-500 p-4" onClick={() => {searchMovies(InputSearch)}}>Search</button>
         </div>
 
         <div className="mx-auto grid gap-8 max-w-4xl md:grid-cols-3 border">
