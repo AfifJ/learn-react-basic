@@ -1,46 +1,33 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { MovieCard } from "./components";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import { MovieSearch, Home } from "./pages";
 
-const API_URL = "http://www.omdbapi.com/?apikey=5c0d5fe6";
 
 const App = () => {
-  const [Movies, setMovies] = useState([]);
-  const [InputSearch, setInputSearch] = useState('');
-  const searchMovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
-    const data = await response.json();
-    setMovies(data.Search);
-  };
-
-  useEffect(() => {
-    searchMovies("home");
-  }, []);
-
   return (
     <>
-      <div className="min-w-screen min-h-screen bg-blue-50 py-5">
-        <h1 className="text-3xl font-bold text-center mb-8">Online Movies</h1>
+    <Router>
 
-        <div className="search text-center overflow-hidden mb-4">
-          <input
-            className="p-4 rounded-sm"
-            type="text"
-            placeholder="Search for movies"
-            value={InputSearch}
-            onChange={(e) => {setInputSearch(e.target.value)}}
-          />
-          <button className="bg-blue-300 hover:bg-blue-500 p-4" onClick={() => {searchMovies(InputSearch)}}>Search</button>
-        </div>
+      <NavLink to="/MovieSearch" className="bg-blue-500 px-5 py-2 rounded-full">
+        Movie
+      </NavLink>
+      <NavLink to="/" className="bg-red-500 px-5 py-2 rounded-full">
+        Home
+      </NavLink>
+      <Routes>
+        <Route path="/MovieSearch" element={<MovieSearch />} />
+        <Route path="/" element={<Home />}  />
+      </ Routes>
+    </Router>
 
-        <div className="mx-auto grid gap-8 max-w-4xl md:grid-cols-3 border">
-          {Movies.map((e) => (
-            <MovieCard movie1={e} />
-          ))}
-        </div>
-      </div>
     </>
   );
 };
 
 export default App;
+
+/* 
+  Best Practice:
+  1. Use index js in components and pages with import each then export instead export in a line (it just more easy to understand)
+  2. 
+*/
