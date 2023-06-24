@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
-import { MovieSearch, Home, GreetMe } from "./pages";
+import { MovieSearch, Home, GreetMe, Timer } from "./pages";
 
 
 const App = () => {
@@ -8,21 +8,25 @@ const App = () => {
     <>
     <Router>
 
-      <div className="py-5 justify-evenly flex gap-4 bg-orange-300">
-      <NavLink to="/" className="bg-red-300 px-5 py-2 rounded-full">
+      <div className="flex gap-4 py-5 bg-orange-300 justify-evenly">
+      <NavLink to="/" className="px-5 py-2 bg-red-300 rounded-full">
         Home
       </NavLink>
-      <NavLink to="/MovieSearch" className="bg-blue-300 px-5 py-2 rounded-full">
+      <NavLink to="/movie-search" className="px-5 py-2 bg-blue-300 rounded-full">
         Movie
       </NavLink>
-      <NavLink to="/greet" className="bg-blue-300 px-5 py-2 rounded-full">
+      <NavLink to="/greet" className="px-5 py-2 bg-blue-300 rounded-full">
         Greet Me
+      </NavLink>
+      <NavLink to="/timer" className="px-5 py-2 bg-blue-300 rounded-full">
+        Timer
       </NavLink>
 
       </div>
       <Routes>
-        <Route path="/MovieSearch" element={<MovieSearch />} />
+        <Route path="/movie-search" element={<MovieSearch />} />
         <Route path="/greet" element={<GreetMe />} />
+        <Route path="/timer" element={<Timer />} />
         <Route path="/" element={<Home />}  />
       </ Routes>
     </Router>

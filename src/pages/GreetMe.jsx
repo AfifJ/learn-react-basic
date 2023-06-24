@@ -3,30 +3,38 @@ import { Welcome } from "../components";
 
 const GreetMe = () => {
   const [name, setName] = useState("");
-  const [User, setUser] = useState("");
+  const [user, setUser] = useState("");
   return (
     <>
-      <div className="py-5 mx-auto text-3xl bg-red-400 text-yellow-100 font-bold rounded-md px-4 max-w-fit">
+      {/* <div className="px-4 py-5 mx-auto text-3xl font-bold text-yellow-100 bg-red-400 rounded-md max-w-fit">
         This page is under construction
-      </div>
-      <div className="mx-auto max-w-fit my-4">
+      </div> */}
+      <div className="mx-auto my-4 max-w-fit">
         <div>Put your name to get greeting</div>
         <form
-          onSubmit={(e) => {
+          onSubmit={(e, name) => {
             e.preventDefault();
-            setUser(name);
+            setUser(e.target.children[0].defaultValue);
           }}
           className="flex flex-col my-2"
         >
           <input
             type="text"
             value={name}
+            autoFocus 
             onInput={(e) => setName(e.target.value)}
-            className="border-2 border-gray-700 rounded-xl px-3"
+            className="px-3 border-2 border-gray-700 rounded-xl"
           />
           <button type="submit">Submit</button>
-          <Welcome name={name} />
         </form>
+        {
+          user && (
+            <>
+            <Welcome greetName={user} />
+            <button className="w-full py-2 mt-4 border hover:bg-purple-300 rounded-3xl" onClick={() => {setUser(""); setName("")}}>Reset</button>
+            </>
+            )
+          }
       </div>
     </>
   );

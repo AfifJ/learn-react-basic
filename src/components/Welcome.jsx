@@ -1,7 +1,10 @@
-const Welcome = ({user = "User"}) => {
+const Welcome = ({ greetName }) => {
   return (
-    <div>Welcome {user}</div>
-  )
-}
+    <div className="flex flex-col mt-24">
+      <div className="mx-auto font-mono w-fit">Welcome</div>
+      <span className="mx-auto font-serif text-3xl font-bold capitalize w-fit">{greetName}</span>
+    </ div>
+  );
+};
 
-export default Welcome
+export default Welcome;
