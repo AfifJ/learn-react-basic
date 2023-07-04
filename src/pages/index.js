@@ -3,6 +3,7 @@ import Home from "./Home";
 import GreetMe from "./GreetMe";
 import Stopwatch from "./Stopwatch";
 import CurrentTime from "./CurrentTime";
+import ToDoList from "./ToDoList";
 
 export {
   Home,
@@ -10,4 +11,5 @@ export {
   GreetMe,
   Stopwatch,
   CurrentTime,
+  ToDoList,
 }
